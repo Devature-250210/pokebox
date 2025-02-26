@@ -1,4 +1,4 @@
-import * as axios from "axios";
+import axios from "axios";
 
 export function Pokemon(id, name, spriteUrl) {
     this.id = id;
@@ -6,24 +6,30 @@ export function Pokemon(id, name, spriteUrl) {
     this.spriteUrl = spriteUrl;
 }
 
-    const function pokePopulate(){
+    function pokePopulate() {
        let pokedexLength = 151
+
+        let thisPokemonFull = {
+           id: 0,
+           name: "",
+           sprites: {
+               front_default: ""
+           }
+        }
+
 
     let pokemonArray = new Array(pokedexLength)
 
 
     for (let i=1; i<=151; i++) {
 
-        const getPokemon = async = (i) => {
+        const getPokemon = async () => {
             console.log("inside the for loop")
             try {
-                let url = "https://pokeapi.co/api/v2/pokemon-form/" + i
+                const url = "https://pokeapi.co/api/v2/pokemon-form/" + i
                 console.log("the url on iteration " + i + ": " + url)
-                let thisPokemonFull = await axios.get(url)
-                let id = thisPokemonFull.id
-                let name = thisPokemonFull.name
-                let spriteUrl = thisPokemonFull.sprites.front_default
-                let thisPokemon = new Pokemon (id, name, spriteUrl)
+                thisPokemonFull = await axios.get(url)
+
 
                 console.log(thisPokemon)
 
