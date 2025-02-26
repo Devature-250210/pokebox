@@ -1,14 +1,16 @@
 package com.revature.backend.dto;
 
 import com.revature.backend.entity.Role;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Set;
 import java.util.UUID;
 
+@Getter
+@Setter
+@Builder
 public class UserDTO {
 
     private UUID id;

@@ -3,15 +3,16 @@ package com.revature.backend.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
 @Entity
 @Getter
 @Setter
+@Table(name = "users")
 @Builder
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
     @Id
@@ -24,6 +25,8 @@ public class User {
     private String firstName;
     private String lastName;
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 }
