@@ -1,0 +1,9 @@
+export const PokeBox:React.FC = () => {
+
+
+    return (
+        <div>
+            <h1>POKEBOX</h1>
+        </div>
+    )
+}

@@ -1,0 +1,17 @@
+import {createBrowserRouter} from "react-router-dom";
+
+import {PokeBox} from "./pages/Login.tsx";
+
+
+
+export const router = createBrowserRouter([
+    {
+        path: "/",
+        children: [
+            {path: "/pokebox", element: <PokeBox />},
+        ]
+    }
+
+
+
+])
