@@ -21,6 +21,7 @@ public class SecurityConfig {
                 .userDetailsService(userService)
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/blog/**").permitAll()
+                        .requestMatchers("/users/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin(Customizer.withDefaults());
