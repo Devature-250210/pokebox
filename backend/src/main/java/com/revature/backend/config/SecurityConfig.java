@@ -22,6 +22,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/blog/**").permitAll()
                         .requestMatchers("/users/**").hasRole("ADMIN")
+                        .requestMatchers("/users/save").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(Customizer.withDefaults());

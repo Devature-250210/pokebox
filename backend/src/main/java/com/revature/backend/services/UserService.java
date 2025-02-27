@@ -48,4 +48,9 @@ public class UserService implements UserDetailsService {
         return userRepository.findAll(PageRequest.of(page, size)).map(userMapper::toUserDTO);
     }
 
+    public UserDTO saveUser(UserDTO userDTO) {
+        User user = userMapper.toUser(userDTO);
+        return userMapper.toUserDTO(userRepository.save(user));
+    }
+
 }
