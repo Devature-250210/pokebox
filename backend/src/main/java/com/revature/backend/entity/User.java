@@ -6,6 +6,9 @@ import lombok.*;
 import java.util.Set;
 import java.util.UUID;
 
+import org.hibernate.type.descriptor.jdbc.VarcharJdbcType;
+
+
 @Entity
 @Getter
 @Setter
@@ -16,10 +19,15 @@ import java.util.UUID;
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(updatable = false, nullable = false)
     private UUID id;
 
     private String username;
+    private String displayName;
+
+    @Column(length = 6)
+    private String nameColor;
     private String password;
     private String email;
     private String firstName;
