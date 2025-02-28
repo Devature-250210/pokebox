@@ -59,4 +59,23 @@ public class UserService implements UserDetailsService {
         return userMapper.toUserDTO(userRepository.save(user));
     }
 
+    public void deleteUser(UUID id) {
+        userRepository.deleteById(id);
+    }
+
+    public UserDTO getUserByUsername(String username) {
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
+            throw new UserNotFoundException("User not found with username: " + username);
+        }
+        return userMapper.toUserDTO(user);
+    }
+
+    public UserDTO updateUser(UUID userId, UserDTO userDTO) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("User not found with id: " + userId));
+        user.setUsername(userDTO.getUsername());
+        user.setEmail(userDTO.getEmail());
+        user.setRole(userDTO.getRole());
+        return userMapper.toUserDTO(userRepository.save(user));
+    }
 }

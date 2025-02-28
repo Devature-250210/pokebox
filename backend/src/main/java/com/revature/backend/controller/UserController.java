@@ -31,7 +31,18 @@ public class UserController {
     }
 
     @GetMapping("/{userId}")
-    public UserDTO getUser(@PathVariable UUID userId) {
-        return userService.getUser(userId);
+    public ResponseEntity<UserDTO> getUser(@PathVariable UUID userId) {
+        return ResponseEntity.ok(userService.getUser(userId));
+    }
+
+    @DeleteMapping("/{userId}")
+    public ResponseEntity<Void> deleteUser(@PathVariable UUID userId) {
+        userService.deleteUser(userId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{userId}")
+    public ResponseEntity<UserDTO> updateUser(@PathVariable UUID userId, @RequestBody UserDTO userDTO) {
+        return ResponseEntity.ok(userService.updateUser(userId, userDTO));
     }
 }
