@@ -3,8 +3,6 @@ package com.revature.backend.dto;
 import com.revature.backend.entity.Role;
 import lombok.*;
 
-import java.util.Set;
-
 @Data
 @Getter
 @Setter
@@ -21,7 +19,7 @@ public class UserDTO {
 
     private String lastName;
 
-    private Set<Role> roles;
+    private Role role;
 
     private String password;
 }
