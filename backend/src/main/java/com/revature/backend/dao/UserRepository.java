@@ -3,8 +3,12 @@ package com.revature.backend.dao;
 import com.revature.backend.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+import java.util.Optional;
+import java.util.UUID;
+
+public interface UserRepository extends JpaRepository<User, UUID> {
     User findByUsername(String username);
-    User findByEmail(String email);
+
+    Optional<User> findByEmail(String email);
     User findByUsernameOrEmail(String username, String email);
 }

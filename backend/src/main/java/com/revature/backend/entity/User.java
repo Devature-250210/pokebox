@@ -1,18 +1,20 @@
 package com.revature.backend.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Getter
-@Setter
+@Data
 @Table(name = "users")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@EntityListeners(UserEntityListener.class)
 public class User {
 
     @Id
@@ -20,13 +22,17 @@ public class User {
     private UUID id;
 
     private String username;
+
+    @Column(name = "password")
     private String password;
+
+    @Column(name = "email", unique = true, nullable = false, length = 100)
     private String email;
+
     private String firstName;
+
     private String lastName;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
-    private Set<Role> roles;
+    private Role role;
 }
