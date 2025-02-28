@@ -1,14 +1,15 @@
 package com.revature.backend.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
 @Entity
 @Data
-@Getter
-@Setter
 @Table(name = "users")
 @Builder
 @AllArgsConstructor
