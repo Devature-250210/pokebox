@@ -1,16 +1,15 @@
 package com.revature.backend.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Set;
 import java.util.UUID;
 
 @Entity
 @Data
+@Getter
+@Setter
 @Table(name = "users")
 @Builder
 @AllArgsConstructor
@@ -22,9 +21,13 @@ public class User {
     private UUID id;
 
     private String username;
+
     private String password;
+
     private String email;
+
     private String firstName;
+
     private String lastName;
 
     @ElementCollection(fetch = FetchType.EAGER)

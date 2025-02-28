@@ -20,8 +20,7 @@ public class SecurityConfig {
                 .csrf().disable()
                 .userDetailsService(userService)
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/blog/**").permitAll()
-                        .requestMatchers("/users/**").hasRole("ADMIN")
+                        .requestMatchers("/users/all").hasRole("ADMIN")
                         .requestMatchers("/users/save").permitAll()
                         .anyRequest().authenticated()
                 )

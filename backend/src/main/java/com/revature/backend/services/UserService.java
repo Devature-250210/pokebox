@@ -5,7 +5,6 @@ import com.revature.backend.dto.UserDTO;
 import com.revature.backend.entity.User;
 import com.revature.backend.exception.UserNotFoundException;
 import com.revature.backend.mappers.UserMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,7 +23,6 @@ public class UserService implements UserDetailsService {
 
     private final UserMapper userMapper;
 
-    @Autowired
     public UserService(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;

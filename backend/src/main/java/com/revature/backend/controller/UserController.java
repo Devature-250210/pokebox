@@ -7,8 +7,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.UUID;
-
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -20,7 +18,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public Page<UserDTO> getUsers(@RequestParam int page, @RequestParam int size) {
         return userService.getAllUsers(page, size);
     }
@@ -30,8 +28,8 @@ public class UserController {
         return ResponseEntity.created(null).body(userService.saveUser(userDTO));
     }
 
-    @GetMapping("/{userId}")
-    public UserDTO getUser(@PathVariable UUID userId) {
-        return userService.getUser(userId);
-    }
+//    @GetMapping("/{userId}")
+//    public UserDTO getUser(@PathVariable UUID userId) {
+//        return userService.getUser(userId);
+//    }
 }
